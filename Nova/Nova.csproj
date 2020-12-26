@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\RagelMSBuildTask.1.1.7\build\RagelMSBuildTask.props" Condition="Exists('..\packages\RagelMSBuildTask.1.1.7\build\RagelMSBuildTask.props')" />
+  <Import Project="..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props" Condition="Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D61300E0-D2F5-453C-BB99-91C441E8397B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nova</RootNamespace>
+    <AssemblyName>Nova</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>7.2</LangVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr4.Runtime">
+      <HintPath>..\packages\Antlr4.Runtime.4.6.6\lib\net45\Antlr4.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+      <HintPath>..\packages\IronRuby.1.1.3\Lib\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+      <HintPath>..\packages\IronRuby.1.1.3\Lib\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+      <HintPath>..\packages\IronRuby.1.1.3\Lib\Microsoft.Scripting.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="Optional, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Optional.4.0.0\lib\net45\Optional.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Reactive.Core, Version=2.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Core.2.2.4\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Interfaces.2.2.4\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Linq.2.2.4\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-PlatformServices.2.2.4\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Builtins\Kernel.cs" />
+    <Compile Include="Builtins\NovaArray.cs" />
+    <Compile Include="Builtins\NovaDictionary.cs" />
+    <Compile Include="Builtins\NovaNumber.cs" />
+    <Compile Include="Builtins\NovaString.cs" />
+    <Compile Include="Expressions\AccessExpression.cs" />
+    <Compile Include="Expressions\AccessSetExpression.cs" />
+    <Compile Include="Expressions\AssignmentExpression.cs" />
+    <Compile Include="Expressions\BeginExpression.cs" />
+    <Compile Include="Expressions\BinaryExpression.cs" />
+    <Compile Include="Expressions\BlockExpression.cs" />
+    <Compile Include="Expressions\BooleanExpression.cs" />
+    <Compile Include="Expressions\ClassOpenExpression.cs" />
+    <Compile Include="Expressions\LoopExpression.cs" />
+    <Compile Include="Expressions\MethodChangeExpression.cs" />
+    <Compile Include="Expressions\NumberExpression.cs" />
+    <Compile Include="Expressions\ObjectMethodChangeExpression.cs" />
+    <Compile Include="Expressions\RegexExpression.cs" />
+    <Compile Include="Expressions\RescueExpression.cs" />
+    <Compile Include="Expressions\CreateArrayExpression.cs" />
+    <Compile Include="Expressions\ForInExpression.cs" />
+    <Compile Include="Expressions\ModuleDefinitionExpression.cs" />
+    <Compile Include="Expressions\ReturnExpression.cs" />
+    <Compile Include="Expressions\SyncExpression.cs" />
+    <Compile Include="Expressions\ThrowExpression.cs" />
+    <Compile Include="Expressions\ConvertExpression.cs" />
+    <Compile Include="Expressions\DoUntilExpression.cs" />
+    <Compile Include="Expressions\DoWhileExpression.cs" />
+    <Compile Include="Expressions\ForExpression.cs" />
+    <Compile Include="Expressions\IfExpression.cs" />
+    <Compile Include="Expressions\IScopeExpression.cs" />
+    <Compile Include="Expressions\LeftHandValueExpression.cs" />
+    <Compile Include="Expressions\NovaExpression.cs" />
+    <Compile Include="Expressions\PutsExpression.cs" />
+    <Compile Include="Expressions\NovaExpression.Factory.cs">
+      <DependentUpon>NovaExpression.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expressions\SwitchExpression.cs" />
+    <Compile Include="Expressions\TypeofExpression.cs" />
+    <Compile Include="Expressions\UnaryExpression.cs" />
+    <Compile Include="Expressions\UnlessExpression.cs" />
+    <Compile Include="Expressions\UntilExpression.cs" />
+    <Compile Include="Expressions\VariableExpression.cs" />
+    <Compile Include="Expressions\WhileExpression.cs" />
+    <Compile Include="Lexer\NovaLexer.partial.cs" />
+    <Compile Include="Lexer\NovaToken.cs" />
+    <Compile Include="Lexer\NovaTokenFactory.cs" />
+    <Compile Include="Lexer\NovaTokenQueue.cs" />
+    <Compile Include="Parser\NovaParser.partial.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Runtime\CompilerServices.cs" />
+    <Compile Include="Runtime\ConstantException.cs" />
+    <Compile Include="Runtime\NovaExpressionVisitor.cs" />
+    <Compile Include="Runtime\Operation.cs" />
+    <Compile Include="Runtime\RuntimeOperations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runtime\RuntimeOperations.ExceptionSystem.cs">
+      <DependentUpon>RuntimeOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runtime\NovaException.cs" />
+    <Compile Include="Runtime\NovaModule.cs" />
+    <Compile Include="Runtime\Symbol.cs" />
+    <Compile Include="Runtime\FunctionArgument.cs" />
+    <Compile Include="Expressions\FunctionDefinitionExpression.cs" />
+    <Compile Include="Expressions\FunctionCallExpression.cs" />
+    <Compile Include="Runtime\NovaPartialFunction.cs" />
+    <Compile Include="Expressions\CreateDictionaryExpression.cs" />
+    <Compile Include="Expressions\KeyValuePairExpression.cs" />
+    <Compile Include="Runtime\NovaFunction.cs" />
+    <Compile Include="Runtime\NovaFunction.Meta.cs">
+      <DependentUpon>NovaFunction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expressions\YieldExpression.cs" />
+    <Compile Include="Runtime\YieldCheckVisitor.cs" />
+    <Compile Include="Expressions\StringExpression.cs" />
+    <Compile Include="Runtime\NovaClass.cs" />
+    <Compile Include="Runtime\NovaClass.Meta.cs">
+      <DependentUpon>NovaClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runtime\NovaNativeFunction.cs" />
+    <Compile Include="Runtime\NovaNativeFunction.Meta.cs">
+      <DependentUpon>NovaNativeFunction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expressions\InvokeExpression.cs" />
+    <Compile Include="Nova.cs" />
+    <Compile Include="Runtime\NovaMethodTable.cs" />
+    <Compile Include="Runtime\NovaMethodTable.Meta.cs">
+      <DependentUpon>NovaMethodTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runtime\NovaPartialFunction.Meta.cs">
+      <DependentUpon>NovaPartialFunction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runtime\NovaContext.cs" />
+    <Compile Include="Runtime\NovaScriptCode.cs" />
+    <Compile Include="Runtime\NovaTextContentProvider.cs" />
+    <Compile Include="Runtime\VariableNameVisitor.cs" />
+    <Compile Include="Expressions\ConditionalAssignmentExpression.cs" />
+    <Compile Include="Expressions\ConditionalAccessSetExpression.cs" />
+    <Compile Include="Expressions\ParallelAssignmentExpression.cs" />
+    <Compile Include="Expressions\AliasExpression.cs" />
+    <Compile Include="Runtime\RuntimeOperations.Variable.cs">
+      <DependentUpon>RuntimeOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runtime\RuntimeOperations.Access.cs">
+      <DependentUpon>RuntimeOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runtime\RuntimeOperations.Function.cs">
+      <DependentUpon>RuntimeOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runtime\RuntimeOperations.Eval.cs">
+      <DependentUpon>RuntimeOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Runtime\RuntimeOperations.Class.cs">
+      <DependentUpon>RuntimeOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expressions\ClassDefinitionExpression.cs" />
+    <Compile Include="Expressions\InstanceReferenceExpression.cs" />
+    <Compile Include="Runtime\NovaScope.cs" />
+    <Compile Include="Runtime\NovaDoNotWrapBoolean.cs" />
+    <Compile Include="Runtime\NovaExportAttribute.cs" />
+    <Compile Include="Runtime\NovaDoNotExportAttribute.cs" />
+    <Compile Include="Expressions\SingletonDefinitionExpression.cs" />
+    <Compile Include="Runtime\NovaUnaryBoolean.cs" />
+    <Compile Include="Runtime\NovaMetaObject.cs" />
+    <Compile Include="Runtime\InteropBinder.cs" />
+    <Compile Include="Runtime\MetaObjectBuilder.cs" />
+    <Compile Include="Runtime\NovaTypeResolver.cs" />
+    <Compile Include="Expressions\IncludeExpression.cs" />
+    <Compile Include="Runtime\NovaInterface.cs" />
+    <Compile Include="Runtime\NovaInterface.Meta.cs">
+      <DependentUpon>NovaInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Expressions\NovaExpressionType.cs" />
+    <Compile Include="Expressions\SetAssignExpression.cs" />
+    <Compile Include="Runtime\NovaBoxedClass.cs" />
+    <Compile Include="Runtime\NovaBoxedInstance.cs" />
+    <Compile Include="Runtime\NovaInstance.cs" />
+    <Compile Include="Runtime\NovaInstance.Meta.cs">
+      <DependentUpon>NovaInstance.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Differences.txt" />
+    <Content Include="tools\ragel.exe" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets. -->
+  <PropertyGroup Label="GenerateNovaProperties">
+    <NovaParser>$(ProjectDir)Nova</NovaParser>
+  </PropertyGroup>
+  <!--
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <Antlr4 Include="Parser\NovaParser.g4">
+      <Generator>MSBuild:Compile</Generator>
+      <CustomToolNamespace>Nova.Parser</CustomToolNamespace>
+      <Listener>False</Listener>
+    </Antlr4>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="tools\ragel-Darwin-x86_64" />
+    <None Include="tools\ragel-Linux-x86_64" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="Hierarchical" ResourceNamePolicy="MSBuild" />
+          <ChangeLogPolicy UpdateMode="ProjectRoot" VcsIntegration="RequireEntry" inheritsSet="Mono">
+            <MessageStyle LineAlign="0" IncludeDirectoryPaths="True" />
+          </ChangeLogPolicy>
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\core.nova">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Ragel Include="Lexer\NovaLexer.rl" />
+  </ItemGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.props'))" />
+    <Error Condition="!Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NETFramework.ReferenceAssemblies.net47.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net47.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NETFramework.ReferenceAssemblies.net47.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net47.targets'))" />
+    <Error Condition="!Exists('..\packages\RagelMSBuildTask.1.1.7\build\RagelMSBuildTask.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RagelMSBuildTask.1.1.7\build\RagelMSBuildTask.props'))" />
+    <Error Condition="!Exists('..\packages\RagelMSBuildTask.1.1.7\build\RagelMSBuildTask.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RagelMSBuildTask.1.1.7\build\RagelMSBuildTask.targets'))" />
+  </Target>
+  <Import Project="..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets" Condition="Exists('..\packages\Antlr4.CodeGenerator.4.6.6\build\Antlr4.CodeGenerator.targets')" />
+  <Import Project="..\packages\Microsoft.NETFramework.ReferenceAssemblies.net47.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net47.targets" Condition="Exists('..\packages\Microsoft.NETFramework.ReferenceAssemblies.net47.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net47.targets')" />
+  <Import Project="..\packages\RagelMSBuildTask.1.1.7\build\RagelMSBuildTask.targets" Condition="Exists('..\packages\RagelMSBuildTask.1.1.7\build\RagelMSBuildTask.targets')" />
+</Project>

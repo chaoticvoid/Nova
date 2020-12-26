@@ -1,0 +1,25 @@
+syntax: glob
+
+*/bin/
+*/obj/
+*.vsmdi
+*.suo
+TestResults/
+*.testsettings
+**/*StyleCop*
+MetricResults/
+packages/
+Nova.Tests/test-results/
+Nova/Lexer/NovaLexer.cs
+Nova/Parser/NovaParser.cs
+*.userprefs
+*.tokens
+test-results/
+.DS_Store
+*.DotSettings*
+*.snk
+**/TestResult.xml
+**/*VisualState.xml
+TestResult.xml
+.vs/
+**/tools/

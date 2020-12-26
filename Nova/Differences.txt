@@ -1,0 +1,10 @@
+﻿This document highlights the differences between Nova 1.0 and Nova WIP.
+
+If constructs without an else have an implicit else block that returns the default value for the type of the then block.
+Everything in Nova returns a value, and this requires the else block to have a return value.
+If you have a block like if (x % 2 == 1) { x + 2; } The interpreter treats it like (assuming x is an int):
+if (x % 2 == 1) { x + 2; } else { default(int); } (Again, if you made this explicit, the cast would be
+automatic).
+
+Nova does not create static .NET classes in the runtime, which Nova does do in the Objective-C runtime.  Instead, Nova uses the DLR to construct dynamic instances with binders that provide much richer access to dynamic facilities.
+
